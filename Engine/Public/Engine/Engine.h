@@ -1,0 +1,39 @@
+#ifndef __ENGINE_H__
+#define __ENGINE_H__
+
+#include "Game/GameModeBase.h"
+#include "Player/PlayerController.h"
+#include "World/World.h"
+
+class Engine
+{
+public:
+	static Engine& CreateEngine();
+
+	bool Initialize();
+	void Run();
+	void Shutdown();
+
+	inline GameModeBase* GetGameMode() const { return GameMode; }
+	inline PlayerController* GetController() const { return Controller; }
+	inline World* GetWorld() const { return GameWorld; }
+
+private:
+	Engine() = default;
+	Engine(const Engine&) = default;
+	Engine& operator=(const Engine&) = default;
+	~Engine() {};
+
+	void ProcessInput();
+	void Update();
+	void Render();
+
+
+	GameModeBase* GameMode;
+	PlayerController* Controller;
+	World* GameWorld;
+	bool bIsRunning = false;
+
+};
+
+#endif // !__ENGINE_H__
