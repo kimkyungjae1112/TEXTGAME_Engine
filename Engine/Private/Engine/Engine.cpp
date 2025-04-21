@@ -20,6 +20,7 @@ bool Engine::Initialize()
     Controller = new PlayerController();
 
     bIsRunning = true;
+    bIsBeforeRun = true;
 
     if (GameWorld && GameMode && Controller) return true;
     else return false;
@@ -28,10 +29,23 @@ bool Engine::Initialize()
 void Engine::Run()
 {
     std::cout << "Starting Game Loop...\n";
+    while (bIsBeforeRun)
+    {
+        Render();
+        if (Input == "게임시작")
+        {
+            bIsBeforeRun = false;
+            break;
+        }
+        ProcessInput();
+    }
+
+    GameWorld->BeginPlay();
+
     while (bIsRunning)
     {
         ProcessInput();
-        Update();
+        OnTurn();
         Render();
     }
 }
@@ -46,15 +60,16 @@ void Engine::Shutdown()
 
 void Engine::ProcessInput()
 {
-    bIsRunning = Controller->HandleInput();
+    bIsRunning = Controller->HandleInput(Input);
 }
 
-void Engine::Update()
+void Engine::OnTurn()
 {
-    GameMode->Update();
+    GameMode->OnTurn();
 }
 
 void Engine::Render()
 {
-    GameMode->Render();
+    GameMode->Render(Input);
 }
+

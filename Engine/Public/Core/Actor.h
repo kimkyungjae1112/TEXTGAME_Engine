@@ -3,8 +3,7 @@
 
 #include "Object.h"
 #include "Component.h"
-#include <vector>
-#include <memory>
+#include "Math/Vector.h"
 
 class GameModeBase;
 class PlayerController;
@@ -15,15 +14,22 @@ public:
 	Actor() = default;
 	virtual ~Actor();
 
-	void AddComponent(std::shared_ptr<Component> Comp);
-	void BeginPlay();
-	void OnTurn();
+	virtual void AddComponent(std::shared_ptr<Component> Comp);
+	virtual void BeginPlay() override;
+	virtual void OnTurn() override;
 
 	GameModeBase* GetGameMode() const;
 	PlayerController* GetController() const;
 
+public:
+	inline Vector GetActorLocation() const { return Location; }
+	inline void SetActorLocation(const Vector& InLocation) { Location = InLocation; }
+
 protected:
 	std::vector<std::shared_ptr<Component>> Components;
+
+protected:
+	Vector Location{ 0,0 };
 };
 
 #endif // !__ACTOR_H__

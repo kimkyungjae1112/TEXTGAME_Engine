@@ -6,7 +6,7 @@
 class PlayerController
 {
 public:
-    bool HandleInput();
+    bool HandleInput(std::string& Input);
 };
 
 #endif // !__PLYAERCONTROLLER_H__

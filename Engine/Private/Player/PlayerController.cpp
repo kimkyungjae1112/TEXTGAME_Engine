@@ -1,14 +1,13 @@
 #include "Player/PlayerController.h"
 #include <iostream>
 
-bool PlayerController::HandleInput()
+bool PlayerController::HandleInput(std::string& Input)
 {
     std::cout << ">> ";
-    std::string command;
-    std::getline(std::cin, command);
+    std::getline(std::cin, Input);
 
-    if (command == "quit") return false;
+    if (Input == "quit") return false;
 
-    std::cout << "[涝仿 贸府凳]: " << command << "\n";
+    std::cout << "[涝仿 贸府凳]: " << Input << "\n";
     return true;
 }

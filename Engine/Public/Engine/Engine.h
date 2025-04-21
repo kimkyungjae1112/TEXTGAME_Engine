@@ -25,15 +25,16 @@ private:
 	~Engine() {};
 
 	void ProcessInput();
-	void Update();
+	void OnTurn();
 	void Render();
 
 
 	GameModeBase* GameMode;
 	PlayerController* Controller;
 	World* GameWorld;
+	std::string Input;
 	bool bIsRunning = false;
-
+	bool bIsBeforeRun = false;
 };
 
 #endif // !__ENGINE_H__

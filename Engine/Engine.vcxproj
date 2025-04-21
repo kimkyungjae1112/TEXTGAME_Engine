@@ -138,8 +138,10 @@
     <ClInclude Include="Public\Core\Actor.h" />
     <ClInclude Include="Public\Core\Component.h" />
     <ClInclude Include="Public\Core\Object.h" />
+    <ClInclude Include="Public\Core\Pawn.h" />
     <ClInclude Include="Public\Engine\Engine.h" />
     <ClInclude Include="Public\Game\GameModeBase.h" />
+    <ClInclude Include="Public\Math\Vector.h" />
     <ClInclude Include="Public\Player\PlayerController.h" />
     <ClInclude Include="Public\World\World.h" />
   </ItemGroup>
@@ -150,6 +152,7 @@
     <ClCompile Include="Private\Game\GameModeBase.cpp" />
     <ClCompile Include="Private\Core\Actor.cpp" />
     <ClCompile Include="Private\Core\Object.cpp" />
+    <ClCompile Include="Private\Core\Pawn.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

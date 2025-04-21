@@ -1,5 +1,8 @@
 #ifndef __OBJECT_H__
 #define __OBJECT_H__
+
+#include <vector>
+#include <memory>
 #include <string>
 
 class World;
@@ -10,8 +13,12 @@ public:
 	Object() = default;
 	virtual ~Object() = default;
 
-	virtual std::string GetName() const { return Name; }
+	inline std::string GetName() const { return Name; }
+	inline void SetName(const std::string& InName) { Name = InName; }
 
+	virtual void BeginPlay();
+	virtual void OnTurn();
+	
 	World* GetWorld() const;
 
 

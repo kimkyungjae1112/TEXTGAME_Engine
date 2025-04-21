@@ -15,6 +15,7 @@ void Actor::BeginPlay()
 
 void Actor::OnTurn()
 {
+    std::cout << "Actor's OnTurn" << std::endl;
     for (auto& comp : Components) comp->Update();
 }
 
