@@ -1,9 +1,9 @@
 #ifndef __ENGINE_H__
 #define __ENGINE_H__
-
-#include "Game/GameModeBase.h"
-#include "Player/PlayerController.h"
-#include "World/World.h"
+#include <string>
+class GameModeBase;
+class PlayerController;
+class World;
 
 class Engine
 {
@@ -13,6 +13,8 @@ public:
 	bool Initialize();
 	void Run();
 	void Shutdown();
+
+	inline void SetGameMode(GameModeBase* InGameMode) { GameMode = InGameMode; }
 
 	inline GameModeBase* GetGameMode() const { return GameMode; }
 	inline PlayerController* GetController() const { return Controller; }

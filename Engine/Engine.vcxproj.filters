@@ -35,6 +35,8 @@
     </ClInclude>
     <ClInclude Include="Public\Core\Pawn.h" />
     <ClInclude Include="Public\Math\Vector.h" />
+    <ClInclude Include="Public\World\Map.h" />
+    <ClInclude Include="Public\UI\Slate.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Private\Engine\Engine.cpp" />
@@ -46,5 +48,7 @@
       <Filter>Public</Filter>
     </ClCompile>
     <ClCompile Include="Private\Core\Pawn.cpp" />
+    <ClCompile Include="Private\World\Map.cpp" />
+    <ClCompile Include="Private\UI\Slate.cpp" />
   </ItemGroup>
 </Project>

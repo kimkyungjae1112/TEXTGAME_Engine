@@ -1,4 +1,7 @@
 #include "Engine/Engine.h"
+#include "Game/GameModeBase.h"
+#include "Player/PlayerController.h"
+#include "World/World.h"
 #include <iostream>
 
 Engine& Engine::CreateEngine()
@@ -14,7 +17,6 @@ Engine& Engine::CreateEngine()
 
 bool Engine::Initialize()
 {
-    std::cout << "Initializing Engine...\n";
     GameWorld = new World();
     GameMode = new GameModeBase(GameWorld);
     Controller = new PlayerController();
@@ -28,7 +30,6 @@ bool Engine::Initialize()
 
 void Engine::Run()
 {
-    std::cout << "Starting Game Loop...\n";
     while (bIsBeforeRun)
     {
         Render();
@@ -52,7 +53,6 @@ void Engine::Run()
 
 void Engine::Shutdown()
 {
-    std::cout << "Shutting down Engine...\n";
     delete GameWorld;
     delete GameMode;
     delete Controller;

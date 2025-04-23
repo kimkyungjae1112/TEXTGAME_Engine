@@ -143,6 +143,8 @@
     <ClInclude Include="Public\Game\GameModeBase.h" />
     <ClInclude Include="Public\Math\Vector.h" />
     <ClInclude Include="Public\Player\PlayerController.h" />
+    <ClInclude Include="Public\UI\Slate.h" />
+    <ClInclude Include="Public\World\Map.h" />
     <ClInclude Include="Public\World\World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +155,8 @@
     <ClCompile Include="Private\Core\Actor.cpp" />
     <ClCompile Include="Private\Core\Object.cpp" />
     <ClCompile Include="Private\Core\Pawn.cpp" />
+    <ClCompile Include="Private\World\Map.cpp" />
+    <ClCompile Include="Private\UI\Slate.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
