@@ -10,7 +10,7 @@ public:
     Map(int Width, int Height);
 
     void SetPlayerPosition(int X, int Y);
-    void DrawMiniMap() const;
+    std::vector<std::string> GetMapLines() const;
 
 private:
     int Width;

@@ -9,7 +9,8 @@ class Slate
 public:
     void AddOption(const std::string& OptionText);
     void Clear();
-    void Draw() const;
+
+    std::vector<std::string> GetPopupLines() const;
 
 private:
     std::vector<std::string> Options;

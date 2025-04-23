@@ -13,18 +13,24 @@ void Map::SetPlayerPosition(int X, int Y)
     PlayerY = Y;
 }
 
-void Map::DrawMiniMap() const
+std::vector<std::string> Map::GetMapLines() const
 {
-    std::cout << "[ 미니맵 ]\n";
+    std::vector<std::string> Lines;
+    Lines.push_back("[ 미니맵 ]");
+
     for (int y = 0; y < Height; ++y)
     {
+        std::string row;
         for (int x = 0; x < Width; ++x)
         {
             if (x == PlayerX && y == PlayerY)
-                std::cout << '@'; // 플레이어 위치
+                row += "@ ";
             else
-                std::cout << Grid[y][x];
+                row += std::string(1, Grid[y][x]) + " ";
         }
-        std::cout << "\n";
+        Lines.push_back(row);
     }
+
+    return Lines;
 }
+

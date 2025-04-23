@@ -12,18 +12,13 @@ void Slate::Clear()
     Options.clear();
 }
 
-void Slate::Draw() const
+std::vector<std::string> Slate::GetPopupLines() const
 {
-    int Width, Height;
-    CONSOLE_SCREEN_BUFFER_INFO csbi;
-    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-    Width = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-    Height = csbi.srWindow.Bottom - csbi.srWindow.Top + 1;
-
-    std::cout << "\n[ 선택지 ]\n";
+    std::vector<std::string> Result;
+    Result.push_back("[ 선택지 ]");
     for (size_t i = 0; i < Options.size(); ++i)
     {
-        int pad = (Width - Options[i].length()) / 2;
-        std::cout << std::string(pad, ' ') << i + 1 << ". " << Options[i] << "\n";
+        Result.push_back(std::to_string(i + 1) + ". " + Options[i]);
     }
+    return Result;
 }

@@ -9,8 +9,12 @@ GameModeBase::GameModeBase(World* InWorld) : GameWorld(InWorld)
 {
 	bIsBeforeRun = true;
 	GameMap = new Map(10, 5);
-	SlatePopup = new Slate();
 	GameMap->SetPlayerPosition(3, 2);
+	
+	SlatePopup = new Slate();
+	SlatePopup->AddOption("앞으로 간다");
+	SlatePopup->AddOption("왼쪽으로 돈다");
+	SlatePopup->AddOption("상태 보기");
 }
 
 GameModeBase::~GameModeBase() = default;
@@ -42,24 +46,13 @@ void GameModeBase::Render(std::string Input)
 
 	std::vector<std::string> Lines;
 
-	// 미니맵 추가
-	Lines.push_back("[ 미니맵 ]");
-	for (int y = 0; y < 5; ++y)
-	{
-		std::string row;
-		for (int x = 0; x < 10; ++x)
-		{
-			if (x == 3 && y == 2) row += "@ ";
-			else row += ". ";
-		}
-		Lines.push_back(row);
-	}
+	auto MapLines = GameMap->GetMapLines();
+	Lines.insert(Lines.end(), MapLines.begin(), MapLines.end());
 
-	Lines.push_back(""); 
-	Lines.push_back("[ 선택지 ]");
-	Lines.push_back("1. 앞으로 간다");
-	Lines.push_back("2. 왼쪽으로 돈다");
-	Lines.push_back("3. 상태 보기");
+	Lines.push_back("");
+
+	auto PopupLines = SlatePopup->GetPopupLines();
+	Lines.insert(Lines.end(), PopupLines.begin(), PopupLines.end());
 
 	DrawConsoleBox(Lines);
 }
